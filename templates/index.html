@@ -1,0 +1,431 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>MerriGarden</title>
+    <link rel="shortcut icon" href="{% static 'assets/img/favicon.png' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pacifico&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader-bg"></div>
+    <div id="preloader">
+        <div id="preloader-status">
+            <div class="preloader-position loader"> <span></span> </div>
+        </div>
+    </div>
+    <!-- Progress scroll totop -->
+    <div class="progress-wrap cursor-pointer">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+            {% include 'include/header.html' %}
+    </nav>
+    <!-- Slider -->
+    <header class="header slider-fade">
+        <div class="owl-carousel owl-theme">
+            {% for slide in slide %}
+            <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
+            <div class="text-center item bg-img" data-overlay-dark="2" data-background="{% static 'assets/img/merrigarden/banner/1.jpg' %}">
+                <div class="v-middle caption">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-10 offset-md-1 bg-main-with-transparent">
+                                <h4>{{slide.title}}</h4>
+                                <h1>{{slide.description}}</h1>
+                                <h4>Цена: {{slide.prise}}$</h4>
+                                <div class="butn-light mt-30 mb-30"> <a href="#"
+                                        data-scroll-nav="1"><span>Подробнее</span></a> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- slider reservation -->
+        <div class="reservation">
+            <a href="tel:8551004444">
+                <div class="icon d-flex justify-content-center align-items-center">
+                    <i class="flaticon-call"></i>
+                </div>
+                <div class="call"><span>{{ass.phone_2}}</span> <br>забронировать</div>
+            </a>
+        </div>
+    </header>
+    <!-- About -->
+    <section class="about section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-30 animate-box" data-animate-effect="fadeInUp">
+                    <div class="section-subtitle">MerriGarden</div>
+                    <div class="section-title">Насладитесь комфортными условиями</div>
+                    <p>{{condition.descriptions|safe}}</p>
+                        
+                    <!-- call -->
+                    <div class="reservations">
+                        <div class="icon"><span class="flaticon-call"></span></div>
+                        <div class="text">
+                            <p>Забронировать</p> <a href="tel:855-100-4444">{{condition.phone}}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-md-3 animate-box" data-animate-effect="fadeInUp">
+                    <img src="{{condition.image1.url}}" alt="" class="mt-90 mb-30 br-20">
+                </div>
+                <div class="col col-md-3 animate-box" data-animate-effect="fadeInUp">
+                    <img src="{{condition.image2.url}}" alt="" class="br-20">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Rooms -->
+    <section class="rooms1 section-padding bg-cream" data-scroll-index="1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-subtitle">MerriGarden</div>
+                    <div class="section-title">Новости</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="item br-20">
+                        <div class="position-re o-hidden"><img src="{{news.image_1.url}}" alt=""></div>
+                        <div class="con">
+                            <h5><a href="{% url 'news' %}">Новость 1</a> </h5>
+                            <div class="line"></div>
+                            <div class="row facilities">
+                                <div class="col col-md-5 text-end">
+                                    <div class="permalink">
+                                        <a href="{% url 'news' %}">
+                                            Подробнее<i class="ti-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="item br-20">
+                        <div class="position-re o-hidden"><img src="{{news.image_2.url}}" alt=""></div>
+                        <div class="con">
+                            <h5><a href="{% url 'news' %}">Новость 2</a></h5>
+                            <div class="line"></div>
+                            <div class="row facilities">
+                                <div class="col col-md-5 text-end">
+                                    <div class="permalink">
+                                        <a href="{% url 'news' %}">
+                                            Подробнее<i class="ti-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="item br-20">
+                        <div class="position-re o-hidden"><img src="{{news.image_3.url}}" alt=""></div>
+                        <div class="con">
+                            <h5><a href="{% url 'news' %}">Новость 3</a></h5>
+                            <div class="line"></div>
+                            <div class="row facilities">
+                                <div class="col col-md-5 text-end">
+                                    <div class="permalink">
+                                        <a href="{% url 'news' %}">
+                                            Подробнее<i class="ti-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="item br-20">
+                        <div class="position-re o-hidden"><img src="{{news.image_4.url}}" alt=""></div>
+                        <div class="con">
+                            <h5><a href="{% url 'news' %}">Новость 4</a></h5>
+                            <div class="line"></div>
+                            <div class="row facilities">
+                                <div class="col col-md-5 text-end">
+                                    <div class="permalink">
+                                        <a href="{% url 'news' %}">
+                                            Подробнее<i class="ti-arrow-right"></i>
+                                        </a>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="item br-20">
+                        <div class="position-re o-hidden"><img src="{{news.image_5.url}}" alt=""></div>
+                        <div class="con">
+                            <h5><a href="{% url 'news' %}">Новость 5</a></h5>
+                            <div class="line"></div>
+                            <div class="row facilities">
+                                <div class="col col-md-5 text-end">
+                                    <div class="permalink">
+                                        <a href="{% url 'news' %}">
+                                            Подробнее<i class="ti-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Promo Video -->
+    <section class="video-wrapper video section-padding bg-img bg-fixed" data-overlay-dark="3"
+        data-background="{% static 'assets/img/merrigarden/banner/1.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2 text-center">
+                    <div class="section-subtitle"><span>MerriGarden</span></div>
+                    <div class="section-title"><span>Видео о MerriGarden</span></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-center col-md-12">
+                    <a class="vid" href="{{video.video_url}}">
+                        <div class="vid-butn">
+                            <span class="icon">
+                                <i class="ti-control-play"></i>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Facilties -->
+    <section class="facilties pt-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-subtitle">MerriGarden</div>
+                    <div class="section-title">Услуги</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="single-facility animate-box br-20" data-animate-effect="fadeInUp">
+                        <span class="flaticon-world"></span>
+                        <h5>Услуга 1</h5>
+                        <p>{{servis.description_1|safe}}</p>
+                        <div class="facility-shape"> <span class="flaticon-world"></span> </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="single-facility animate-box br-20" data-animate-effect="fadeInUp">
+                        <span class="flaticon-car"></span>
+                        <h5>Услуга 2</h5>
+                        <p>{{servis.description_2|safe}}</p>
+                        <div class="facility-shape"> <span class="flaticon-car"></span> </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="single-facility animate-box br-20" data-animate-effect="fadeInUp">
+                        <span class="flaticon-bed"></span>
+                        <h5>Услуга 3</h5>
+                        <p>{{servis.description_3|safe}}</p>
+                        <div class="facility-shape"> <span class="flaticon-bed"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 p-0 animate-box" data-animate-effect="fadeInLeft">
+                    <div class="img left brl-20">
+                        <a href="{% url 'list' %}"><img src="{{servis.image_1.url}}" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-md-6 p-0 bg-cream valign animate-box brr-20" data-animate-effect="fadeInRight">
+                    <div class="content">
+                        <div class="cont text-left">
+                            <h4>Услуга 1</h4>
+                            <p>{{servis.description_1|safe}}</p>
+                            <div class="butn-dark br-20"> <a href="{% url 'list' %}"><span>Заказать услугу</span></a> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 bg-cream p-0 order2 valign animate-box brl-20" data-animate-effect="fadeInLeft">
+                    <div class="content">
+                        <div class="cont text-left">
+                            <h4>Услуга 2</h4>
+                            <p>{{servis.description_2|safe}}</p>
+                            <div class="butn-dark br-20"> <a href="{% url 'list' %}"><span>Заказать услугу</span></a> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 p-0 order1 animate-box" data-animate-effect="fadeInRight">
+                    <div class="img brr-20">
+                        <a href="{% url 'list' %}"><img src="{{servis.image_2.url}}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 p-0 animate-box" data-animate-effect="fadeInLeft">
+                    <div class="img left brl-20">
+                        <a href="{% url 'list' %}"><img src="{{servis.image_3.url}}" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-md-6 p-0 bg-cream valign animate-box brr-20" data-animate-effect="fadeInRight">
+                    <div class="content">
+                        <div class="cont text-left">
+                            <h4>Услуга 3</h4>
+                            <p>{{servis.description_3|safe}}</p>
+                            <div class="butn-dark br-20"> <a href="{% url 'list' %}"><span>Заказать услугу</span></a> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Boss -->
+    <section class="section-padding-boss">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-subtitle"><span>MerriGarden</span></div>
+                    <div class="section-title">Команда</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-md-6 animate-box" data-animate-effect="fadeInUp">
+                    <img src="{{boss.image.url}}" alt="" class="br-20">
+                </div>
+                <div class="col-md-6 mb-30 animate-box" data-animate-effect="fadeInUp">
+                    <div class="section-subtitle">Boss</div>
+                    <div class="section-title">{{boss.title}}</div>
+                    <p>{{boss.description|safe}}</p>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- News -->
+    <section class="news section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="owl-carousel owl-theme">
+                        {% for comand in comands %}
+                        <div class="item br-20">
+                            <div class="position-re o-hidden br-20"> 
+                                <img class="br-20" src="{{comand.photo.url}}" alt="">
+                            </div>
+                            <div class="con br-20">
+                                <h5><a href="{% url 'team' %}">{{comand.name}}</a></h5>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Reservation & Booking Form -->
+    <section class="testimonials">
+        <div class="background bg-img bg-fixed section-padding pb-0" data-background="{% static 'assets/img/merrigarden/banner/2.jpg' %}"
+            data-overlay-dark="2">
+            <div class="container">
+                <div class="row">
+                    <!-- Reservation -->
+                    <div class="col-md-5 mb-30 mt-30">
+                        <div class="reservations mb-30">
+                            <div class="icon color-1"><span class="flaticon-call"></span></div>
+                            <div class="text">
+                                <p class="color-1">Забронировать</p> <a class="color-1" href="tel:">{{ass.phone_3}}</a>
+                            </div>
+                        </div>
+                        <p><i class="ti-check"></i><small>Позвоните нам</small></p>
+                    </div>
+                    <!-- Booking From -->
+                    {% include 'include/contact.html' %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Clients -->
+    <section class="clients">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="owl-carousel owl-theme">
+                        <div class="clients-logo">
+                            <a href="#0"><img src="{% static 'assets/img/clients/1.png' %}" alt=""></a>
+                        </div>
+                        <div class="clients-logo">
+                            <a href="#0"><img src="{% static 'assets/img/clients/2.png' %}" alt=""></a>
+                        </div>
+                        <div class="clients-logo">
+                            <a href="#0"><img src="{% static 'assets/img/clients/3.png' %}" alt=""></a>
+                        </div>
+                        <div class="clients-logo">
+                            <a href="#0"><img src="{% static 'assets/img/clients/4.png' %}" alt=""></a>
+                        </div>
+                        <div class="clients-logo">
+                            <a href="#0"><img src="{% static 'assets/img/clients/5.png' %}" alt=""></a>
+                        </div>
+                        <div class="clients-logo">
+                            <a href="#0"><img src="{% static 'assets/img/clients/6.png' %}" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    {% include 'include/footer.html' %}
+    <!-- jQuery -->
+    <script src="{% static 'assets/js/jquery-3.6.3.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery-migrate-3.0.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/modernizr-2.6.2.min.js' %}"></script>
+    <script src="{% static 'assets/js/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.isotope.v3.0.2.js' %}"></script>
+    <script src="{% static 'assets/js/pace.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/scrollIt.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.magnific-popup.js' %}"></script>
+    <script src="{% static 'assets/js/YouTubePopUp.js' %}"></script>
+    <script src="{% static 'assets/js/select2.js' %}"></script>
+    <script src="{% static 'assets/js/datepicker.js' %}"></script>
+    <script src="{% static 'assets/js/smooth-scroll.min.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+</body>
+
+</html>
